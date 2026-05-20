@@ -19,23 +19,26 @@
 8. [Danh sách vai trò chi tiết](#8-danh-sách-vai-trò-chi-tiết)
 9. [Luật xử lý tương tác & xung đột](#9-luật-xử-lý-tương-tác--xung-đột)
 10. [Vai trò Quản trò (Moderator)](#10-vai-trò-quản-trò-moderator)
-11. [Các biến thể & luật tùy chọn](#11-các-biến-thể--luật-tùy-chọn)
-12. [Bảng tra nhanh](#12-bảng-tra-nhanh)
-13. [Thuật ngữ](#13-thuật-ngữ)
+11. [Điều chỉnh cho chơi Online](#11-điều-chỉnh-cho-chơi-online)
+12. [Các biến thể & luật tùy chọn](#12-các-biến-thể--luật-tùy-chọn)
+13. [Bảng tra nhanh](#13-bảng-tra-nhanh)
+14. [Thuật ngữ](#14-thuật-ngữ)
 
 ---
 
 ## 1. TỔNG QUAN
 
-Ma Sói là game suy luận xã hội (social deduction) chơi theo nhóm, có **một Quản trò (Quản trò / Moderator)** điều phối và **các người chơi** được chia bí mật vào hai phe đối lập (và đôi khi phe thứ ba độc lập).
+Ma Sói là game suy luận xã hội (social deduction) chơi theo nhóm, có **một Quản trò (người điều phối hoặc trọng tài trung lập tự động)** và **các người chơi** được chia bí mật vào hai phe đối lập (và đôi khi phe thứ ba độc lập).
 
 - **Phe Dân làng**: đa số, không biết ai là Sói, phải tìm và treo cổ hết Sói.
 - **Phe Ma Sói**: thiểu số, biết nhau, mỗi đêm giết một Dân làng, ngụy trang ban ngày.
 - **Phe độc lập (phe thứ ba)**: có mục tiêu thắng riêng, không thuộc Dân hay Sói.
 
-Game diễn ra theo các **vòng (round)**, mỗi vòng gồm **pha Đêm** (mọi người nhắm mắt, các vai có chức năng hành động bí mật) và **pha Ngày** (mọi người thảo luận và biểu quyết treo cổ một người).
+Game diễn ra theo các **vòng (round)**, mỗi vòng gồm **pha Đêm** (các vai có chức năng hành động bí mật) và **pha Ngày** (mọi người thảo luận và biểu quyết treo cổ một người).
 
 Game kết thúc khi một phe đạt điều kiện thắng.
+
+> 🎮 **Game này chơi được cả hai hình thức:** *trực tiếp* (mọi người ngồi vòng tròn, nhắm/mở mắt theo hiệu lệnh Quản trò) và *online* (mỗi người ở một nơi, hành động được chọn **kín** và tính theo **đồng hồ pha chơi**). Bản luật này mô tả thống nhất cho cả hai; các điểm **riêng cho online** được nêu ở **Mục 11**.
 
 ---
 
@@ -43,11 +46,12 @@ Game kết thúc khi một phe đạt điều kiện thắng.
 
 | Thành phần | Mô tả |
 |---|---|
-| **Bộ bài vai trò** | Mỗi lá tương ứng một vai trò (Dân, Sói, Tiên tri…). Số lá phát ra = số người chơi. |
-| **Quản trò (Moderator)** | 1 người **không tham gia phe nào**, điều phối toàn bộ game, gọi vai trò, công bố kết quả. |
-| **Người chơi** | Từ 5 người trở lên (lý tưởng 8–18). Mỗi người nhận 1 vai bí mật. |
-| **Khu vực chơi** | Người chơi ngồi vòng tròn để dễ quan sát và biểu quyết. |
-| **(Tùy chọn) Token/đánh dấu** | Đánh dấu Trưởng làng, cặp đôi yêu nhau, người được bảo vệ… để Quản trò quản lý. |
+| **Bộ vai trò** | Tập hợp vai trò được phát cho ván (Dân, Sói, Tiên tri…). Số vai phát ra = số người chơi. Khi chơi trực tiếp là bộ bài; khi chơi online là vai được gán kín cho từng người. |
+| **Quản trò (Moderator)** | Bên **không tham gia phe nào**, điều phối toàn bộ game: chia vai, gọi pha, nhận hành động kín, tính kết quả, công bố. Có thể là một người dẫn, hoặc một trọng tài trung lập tự động (khi chơi online). |
+| **Người chơi** | Từ 5 người trở lên (lý tưởng 8–18). Mỗi người nhận 1 vai bí mật và có **trạng thái** riêng (còn sống / đã chết, và các dấu hiệu như được bảo vệ, bị mê hoặc, thuộc cặp đôi…). |
+| **Phòng chơi** | Nơi tập hợp đủ người trước khi bắt đầu (chơi trực tiếp: ngồi vòng tròn; chơi online: một phòng chung có danh sách người chơi và trạng thái còn sống/đã chết). |
+| **Đồng hồ pha chơi** | Giới hạn thời gian cho mỗi pha (đặc biệt cần khi chơi online): hết giờ thì pha tự kết thúc và chốt các hành động đã chọn. |
+| **(Tùy chọn) Dấu đánh dấu trạng thái** | Ghi nhận Trưởng làng, cặp đôi yêu nhau, người được bảo vệ, người bị mê hoặc… để Quản trò quản lý chính xác. |
 
 ---
 
@@ -95,7 +99,7 @@ Mỗi vai có điều kiện thắng **riêng**, được kiểm tra **ưu tiên
 
 ### Cách chia vai
 1. Quản trò chọn bộ vai phù hợp số người và đảm bảo cân bằng.
-2. Úp bài, xáo trộn, phát ngẫu nhiên mỗi người 1 lá.
+2. Phát vai **ngẫu nhiên** mỗi người 1 vai (trực tiếp: úp bài, xáo trộn, bốc; online: gán kín cho từng người).
 3. Người chơi **xem bí mật** vai của mình, **không tiết lộ**.
 4. Quản trò ghi nhớ ai là vai gì (hoặc dùng bảng theo dõi).
 
@@ -115,33 +119,37 @@ Game lặp lại chu kỳ **Đêm → Ngày** cho tới khi có phe thắng.
 [Ngày 2]           → ... lặp lại ...
 ```
 
-- **Đêm đầu tiên** đặc biệt: Cupid bắn tên, các Sói mở mắt nhận diện nhau lần đầu. Một số luật cho Đêm đầu **không có ai chết** (chỉ khởi tạo).
+- **Đêm đầu tiên** đặc biệt: Cupid bắn tên, các Sói nhận diện nhau lần đầu. Một số luật cho Đêm đầu **không có ai chết** (chỉ khởi tạo).
 - **Đêm thường:** các vai hành động theo trình tự (Mục 6).
 - **Ngày:** công bố cái chết, thảo luận, biểu quyết.
+
+> ⏱️ **Mỗi pha có giới hạn thời gian** (đồng hồ pha chơi). Hết giờ, pha tự kết thúc: hành động nào chưa chọn coi như **bỏ qua** (xem luật người vắng mặt ở Mục 11). Thời lượng gợi ý: Đêm 30–60 giây cho mỗi nhóm hành động, Ngày 2–5 phút thảo luận + 30–60 giây biểu quyết. Quản trò tùy chỉnh theo số người.
 
 ---
 
 ## 6. TRÌNH TỰ PHA ĐÊM (NIGHT ORDER)
 
-Quản trò hô: **"Trời tối, tất cả nhắm mắt."** Sau đó gọi từng vai theo thứ tự dưới đây. Vai nào không có trong ván thì bỏ qua. Mọi giao tiếp với Quản trò bằng **ra hiệu (chỉ tay/gật đầu)**, không nói thành tiếng.
+Khi vào Đêm, Quản trò gọi từng vai theo thứ tự dưới đây. Vai nào không có trong ván thì bỏ qua.
+- **Chơi trực tiếp:** Quản trò hô *"Trời tối, tất cả nhắm mắt"*, gọi từng vai mở mắt hành động bằng **ra hiệu (chỉ tay/gật đầu)**, không nói thành tiếng.
+- **Chơi online:** mỗi vai **chọn mục tiêu kín** trong thời gian của pha; không ai thấy lựa chọn của người khác. Các Sói có **kênh trao đổi riêng** chỉ Sói thấy. Kết quả đêm chỉ được công bố khi sang Ngày.
 
 ### Trình tự chuẩn
 
 | # | Vai trò | Tần suất | Hành động |
 |---|---|---|---|
 | 1 | **Cupid** | Chỉ Đêm đầu | Chọn 2 người làm cặp đôi yêu nhau. |
-| 2 | **Cặp đôi yêu nhau** | Chỉ Đêm đầu | Mở mắt nhận diện nhau. |
+| 2 | **Cặp đôi yêu nhau** | Chỉ Đêm đầu | Được cho biết kín người kia là ai. |
 | 3 | **Thầy đồng / Người gọi hồn** | Mỗi đêm (tùy luật) | Giao tiếp với người đã chết (theo luật nhà). |
-| 4 | **Tiên tri (Seer)** | Mỗi đêm | Chỉ 1 người → Quản trò ra hiệu Sói/không-Sói. |
+| 4 | **Tiên tri (Seer)** | Mỗi đêm | Chọn 1 người → được báo **kín** người đó là Sói / không phải Sói. |
 | 5 | **Bảo vệ (Guard)** | Mỗi đêm | Chọn 1 người để bảo vệ đêm đó (không trùng đêm trước). |
-| 6 | **Ma Sói (tất cả Sói)** | Mỗi đêm | Cùng mở mắt, thống nhất **1 nạn nhân** để cắn. |
+| 6 | **Ma Sói (tất cả Sói)** | Mỗi đêm | Cùng thống nhất **1 nạn nhân** để cắn (trao đổi qua kênh riêng của Sói). |
 | 6b | **Sói Trắng** | Cách đêm | (Mỗi 2 đêm) có thể giết thêm 1 **Sói khác** một mình. |
 | 6c | **Sói Tiên tri** | Mỗi đêm | Soi 1 người để biết vai chính xác (thay vì chỉ Sói/không). |
-| 7 | **Phù thủy (Witch)** | Mỗi đêm | Được biết ai bị Sói cắn; có thể dùng **Bình Cứu** (cứu nạn nhân) và/hoặc **Bình Độc** (giết thêm 1 người). Mỗi bình dùng 1 lần cả ván. |
+| 7 | **Phù thủy (Witch)** | Mỗi đêm | Được biết kín ai bị Sói cắn; có thể dùng **Bình Cứu** (cứu nạn nhân) và/hoặc **Bình Độc** (giết thêm 1 người). Mỗi bình dùng 1 lần cả ván. |
 | 8 | **Kẻ Thổi Sáo (Pied Piper)** | Mỗi đêm | Mê hoặc 2 người (1 nếu ít người còn sống). |
-| 9 | **Cô bé (Little Girl)** | Mỗi đêm | Có thể hé mắt rình lúc Sói hành động — rủi ro bị Sói bắt gặp. |
+| 9 | **Cô bé (Little Girl)** | Mỗi đêm | Cố nhận diện Sói khi Sói hành động — rủi ro bị Sói phát hiện (xem Mục 8.1). |
 
-Sau khi tất cả hành động xong: **"Trời sáng, mọi người mở mắt."** Quản trò công bố ai đã chết đêm qua (không tiết lộ vai trừ khi luật yêu cầu).
+Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: hô *"Trời sáng, mọi người mở mắt"*). Quản trò công bố ai đã chết đêm qua (không tiết lộ vai trừ khi luật yêu cầu).
 
 > 📌 Trình tự có thể điều chỉnh theo luật nhà, nhưng **nguyên tắc bất biến**: Bảo vệ chọn **trước** khi Sói cắn; Phù thủy hành động **sau** khi Sói cắn (vì cần biết nạn nhân).
 
@@ -150,20 +158,20 @@ Sau khi tất cả hành động xong: **"Trời sáng, mọi người mở mắ
 ## 7. PHA NGÀY: THẢO LUẬN & BIỂU QUYẾT
 
 ### 7.1. Công bố cái chết
-- Quản trò thông báo (những) người chết đêm qua. Người chết **lật bài**, **rời cuộc chơi**, và **không được nói/ra hiệu** cho người sống nữa.
+- Quản trò thông báo (những) người chết đêm qua. Người chết chuyển sang trạng thái **đã chết**: **rời cuộc chơi**, **không được giao tiếp** với người còn sống nữa (trực tiếp: úp/lật bài rồi im lặng; online: chuyển sang chế độ khán giả, chỉ xem hoặc trò chuyện trong kênh riêng của người đã chết).
 - Một số vai kích hoạt khi chết (Thợ săn bắn, Cặp đôi chết theo nhau) — xử lý ngay.
 
 ### 7.2. Thảo luận
-- Tất cả người còn sống thảo luận tự do: buộc tội, biện hộ, suy luận.
+- Tất cả người còn sống thảo luận tự do: buộc tội, biện hộ, suy luận (trực tiếp: nói chuyện; online: kênh trò chuyện chung bằng văn bản hoặc thoại, **chỉ người còn sống** tham gia).
 - Người chơi có thể "claim" (khai) vai của mình để tạo lòng tin — nhưng đó cũng là rủi ro lộ mặt cho Sói.
 
 ### 7.3. Biểu quyết treo cổ (Lynch)
 1. Đề cử các ứng viên bị nghi.
-2. Biểu quyết bằng giơ tay (hoặc đếm phiếu).
-3. **Người nhiều phiếu nhất bị treo cổ**, lật bài và rời game.
+2. Mỗi người còn sống bỏ **1 phiếu** (trực tiếp: giơ tay; online: chọn tên người muốn treo cổ, trong thời gian biểu quyết).
+3. **Người nhiều phiếu nhất bị treo cổ**, lộ kết cục và rời game.
 4. **Hòa phiếu:** áp dụng luật nhà — phổ biến là **không ai chết**, hoặc bỏ phiếu lại giữa những người hòa, hoặc **Trưởng làng** phá hòa.
 
-> Mỗi ngày treo cổ **tối đa 1 người** (trừ biến thể đặc biệt). Có thể có luật "bỏ qua không treo ai" nếu làng đồng thuận.
+> Mỗi ngày treo cổ **tối đa 1 người** (trừ biến thể đặc biệt). Có thể có luật "bỏ qua không treo ai" nếu làng đồng thuận. Khi chơi online, ai **không bỏ phiếu** trước khi hết giờ coi như **phiếu trắng**.
 
 ---
 
@@ -206,8 +214,8 @@ Sau khi tất cả hành động xong: **"Trời sáng, mọi người mở mắ
 - **Lưu ý:** Cầu nối thông tin giữa người chết và người sống.
 
 #### Cô bé (Little Girl) 👧
-- **Phe:** Dân. **Hành động:** Trong lúc Sói hành động ban đêm, Cô bé được **hé mắt rình** để cố nhận diện Sói.
-- **Rủi ro:** Nếu Quản trò/Sói **bắt gặp** cô đang nhìn, Sói có thể chọn **giết cô bé** thay vì nạn nhân dự định (luật nhà). Năng lực mạo hiểm cao.
+- **Phe:** Dân. **Hành động:** Trong lúc Sói hành động ban đêm, Cô bé được **hé nhìn** để cố nhận diện Sói (trực tiếp: hé mắt rình; online: được phép "rình" kênh Sói trong giây lát, theo luật nhà).
+- **Rủi ro:** Nếu bị Sói **phát hiện** đang rình, Sói có thể chọn **giết Cô bé** thay vì nạn nhân dự định (luật nhà). Năng lực mạo hiểm cao.
 
 #### Cupid / Thần Tình Yêu 💘
 - **Phe:** Dân (nhưng tạo ra cơ chế phe thứ ba). **Hành động:** Chỉ **Đêm đầu**, chọn **2 người** (có thể gồm chính mình) thành **Cặp đôi yêu nhau**.
@@ -283,12 +291,41 @@ Quản trò là **trọng tài trung lập**, không thuộc phe nào, là ngư�
 
 **Mẹo cho Quản trò:**
 - Dùng bảng theo dõi trạng thái: ai sống/chết, bình thuốc còn không, ai được bảo vệ đêm trước, ai bị mê hoặc, cặp đôi là ai.
-- Luôn hô hiệu lệnh nhất quán: *"… thức dậy"* → *"… nhắm mắt lại"*.
+- Luôn hiệu lệnh nhất quán khi chuyển pha; khi chơi online thì hiển thị rõ **pha hiện tại** và **thời gian còn lại**.
 - Khi nhiều vai cùng nhắm 1 người, xử lý theo bảng tương tác (Mục 9).
+- Khi chơi online, Quản trò (người hoặc trọng tài tự động) còn lo: đặt **đồng hồ pha**, nhận **lựa chọn kín** của từng vai, giữ **kênh riêng cho Sói** và **kênh người đã chết**, và xử lý **người vắng mặt** (Mục 11).
 
 ---
 
-## 11. CÁC BIẾN THỂ & LUẬT TÙY CHỌN
+## 11. ĐIỀU CHỈNH CHO CHƠI ONLINE
+
+Phần này **chỉ là luật chơi** áp dụng khi mọi người chơi từ xa, không ngồi cùng phòng. Mục tiêu: giữ nguyên trải nghiệm Ma Sói nhưng thay các thao tác "nhắm/mở mắt, ra hiệu tay" bằng **lựa chọn kín theo thời gian**.
+
+### 11.1. Thông tin ai được thấy gì
+- **Người còn sống:** thấy danh sách người chơi và trạng thái còn sống/đã chết; tham gia kênh trò chuyện chung ban ngày.
+- **Phe Sói:** có **kênh trao đổi riêng** ban đêm; chỉ Sói thấy nội dung và biết mặt nhau.
+- **Cặp đôi yêu nhau:** được cho biết kín danh tính người kia, và có thể có kênh riêng (tùy luật).
+- **Người đã chết:** chuyển sang **chế độ khán giả** — xem được diễn biến nhưng **không được nhắn/gợi ý** cho người sống; có thể có kênh trò chuyện riêng giữa những người đã chết.
+- **Vai chức năng:** kết quả riêng (Tiên tri soi, Phù thủy biết nạn nhân…) chỉ hiển thị **kín cho đúng người đó**.
+
+### 11.2. Hành động theo đồng hồ
+- Mỗi pha có **thời gian giới hạn**; trong pha Đêm, mỗi vai **chọn mục tiêu kín** trước khi hết giờ.
+- Các hành động đêm được **chốt đồng loạt** khi pha kết thúc, rồi mới tính kết quả theo trình tự ở Mục 6 (Bảo vệ trước Sói, Phù thủy sau Sói…).
+- Kết quả đêm (ai chết/được cứu) **chỉ công bố** khi sang Ngày, không lộ trong lúc Đêm.
+
+### 11.3. Người vắng mặt / rời giữa chừng
+- Ai **không kịp chọn** hành động trước khi hết giờ: coi như **bỏ lượt** (không hành động đêm đó); khi biểu quyết thì tính **phiếu trắng**.
+- Nếu một người **rời hẳn** giữa ván, áp dụng luật nhà: (a) giữ nhân vật ở trạng thái "không hành động/không bỏ phiếu", hoặc (b) coi như **chết** và xử lý các hiệu ứng khi chết (Thợ săn bắn, cặp đôi chết theo…). Nên chốt cách xử lý **trước khi bắt đầu**.
+- Để tránh bế tắc: nếu cả phe Sói không ai chọn nạn nhân, **đêm đó không ai bị cắn** (hoặc theo luật "Sói cắn không thống nhất" ở Mục 12).
+
+### 11.4. Giữ công bằng (fair-play)
+- Vai trò và lựa chọn của mỗi người là **bí mật tuyệt đối**; không tiết lộ ra kênh chung.
+- Người đã chết **không được** mách nước cho người sống bằng bất kỳ kênh nào.
+- Khuyến nghị **khóa đổi phiếu** sau khi đã chốt biểu quyết, để tránh giằng co phút chót (tùy luật nhà).
+
+---
+
+## 12. CÁC BIẾN THỂ & LUẬT TÙY CHỌN
 
 - **Đêm đầu không ai chết:** chỉ khởi tạo (Cupid, nhận mặt Sói), Sói chưa cắn. Giúp game không mất vai sớm.
 - **Lật bài khi chết hay không:** giấu vai người chết để tăng độ khó suy luận, hoặc lật bài để minh bạch.
@@ -300,7 +337,7 @@ Quản trò là **trọng tài trung lập**, không thuộc phe nào, là ngư�
 
 ---
 
-## 12. BẢNG TRA NHANH
+## 13. BẢNG TRA NHANH
 
 ### Phân loại vai theo phe
 
@@ -332,7 +369,7 @@ Quản trò là **trọng tài trung lập**, không thuộc phe nào, là ngư�
 
 ---
 
-## 13. THUẬT NGỮ
+## 14. THUẬT NGỮ
 
 | Thuật ngữ | Ý nghĩa |
 |---|---|
@@ -346,7 +383,11 @@ Quản trò là **trọng tài trung lập**, không thuộc phe nào, là ngư�
 | **Phe độc lập (Solo)** | Vai thắng theo điều kiện riêng, không thuộc Dân/Sói. |
 | **Pha (Phase)** | Một giai đoạn trong vòng chơi: Đêm hoặc Ngày. |
 | **Vòng (Round)** | Một chu kỳ đầy đủ gồm 1 Đêm + 1 Ngày. |
+| **Lựa chọn kín** | Hành động được chọn riêng tư, không ai khác thấy (cơ chế chính khi chơi online). |
+| **Đồng hồ pha** | Thời gian giới hạn của mỗi pha; hết giờ pha tự chốt. |
+| **Phiếu trắng** | Không bỏ phiếu treo cổ ai (do chủ động hoặc hết giờ). |
+| **Chế độ khán giả** | Trạng thái của người đã chết: xem được nhưng không tác động vào ván. |
 
 ---
 
-> **Ghi chú cuối:** Đây là bản luật tham chiếu. Trước mỗi ván, Quản trò nên **chốt rõ luật nhà** ở các điểm dễ tranh cãi (Mục 9 và 11) để mọi người chơi thống nhất.
+> **Ghi chú cuối:** Đây là bản luật tham chiếu, dùng được cho cả chơi trực tiếp lẫn online. Trước mỗi ván, Quản trò nên **chốt rõ luật nhà** ở các điểm dễ tranh cãi (Mục 9, 11 và 12) để mọi người chơi thống nhất.
