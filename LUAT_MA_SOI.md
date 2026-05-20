@@ -62,8 +62,9 @@ Gồm Dân thường và mọi vai trò có chức năng thuộc phe Dân (Tiên
 - **Thắng khi:** **toàn bộ Ma Sói** (và Sói trắng) bị loại khỏi game.
 
 ### Phe Ma Sói (Werewolves) 🔴
-Gồm Ma Sói thường và các biến thể Sói.
-- **Thắng khi:** số Ma Sói **≥** số Dân làng còn sống (Sói áp đảo, không thể bị treo cổ một cách dân chủ nữa). Một số nhóm chơi luật: **Sói thắng khi số Sói = số Dân còn sống**.
+Gồm Ma Sói thường và các biến thể Sói **theo phe** (Sói Tiên tri, Sói Nguyền).
+- **Thắng khi:** số Sói **≥** số Dân làng còn sống (Sói áp đảo, không thể bị treo cổ một cách dân chủ nữa). Một số nhóm chơi luật: **Sói thắng khi số Sói = số Dân còn sống**.
+- ⚠️ **Sói Trắng KHÔNG tính** vào "số Sói" khi xét điều kiện này, vì nó là **phe độc lập** (xem dưới). Khi trên bàn chỉ còn Sói Trắng và (các) Dân, phe Sói thường **không thắng**; ván tiếp tục để Sói Trắng đua tới khi còn một mình.
 
 ### Phe độc lập / phe thứ ba (Solo) 🟣
 Mỗi vai có điều kiện thắng **riêng**, được kiểm tra **ưu tiên** trước khi xét Dân/Sói:
@@ -279,27 +280,35 @@ Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: 
 
 ## 10. VAI TRÒ QUẢN TRÒ (MODERATOR)
 
-Quản trò là **trọng tài trung lập**, không thuộc phe nào, là người duy nhất biết toàn bộ vai.
+Quản trò là **trọng tài trung lập**, không thuộc phe nào, là bên duy nhất biết toàn bộ vai. **Chơi trực tiếp thì cần một người làm Quản trò.**
 
-**Trách nhiệm:**
-1. Chọn cấu hình vai, chia bài, ghi nhớ ai là vai gì.
-2. Điều phối pha Đêm: gọi từng vai đúng trình tự, ghi nhận hành động bí mật.
-3. Tính toán kết quả đêm (ai chết, ai được cứu) **chính xác và công bằng**.
-4. Điều phối pha Ngày: dẫn dắt thảo luận, tổ chức biểu quyết, công bố treo cổ.
-5. Kiểm tra điều kiện thắng sau mỗi pha và **tuyên bố kết thúc** khi đạt.
+> 🤖 **Chơi online thì KHÔNG cần Quản trò người.** Toàn bộ việc của Quản trò được thay bằng **luật cố định + thứ tự lượt công khai**: tới lượt vai nào thì **chính người giữ vai đó tự thao tác** (chọn mục tiêu kín), hết lượt thì sang vai kế. Kết quả và điều kiện thắng được suy ra **máy móc theo đúng các luật trong tài liệu này**, không cần ai phán xử. Xem Mục 11.
+
+**Trách nhiệm (do người Quản trò làm khi chơi trực tiếp, hoặc do luật/thứ tự lượt tự lo khi online):**
+1. Chọn cấu hình vai, chia vai, biết ai là vai gì.
+2. Điều phối pha Đêm: cho từng vai hành động **đúng trình tự** (Mục 6), nhận hành động bí mật.
+3. Tính kết quả đêm (ai chết, ai được cứu) **chính xác và công bằng**, theo bảng tương tác Mục 9.
+4. Điều phối pha Ngày: mở thảo luận, tổ chức biểu quyết, công bố treo cổ.
+5. Kiểm tra điều kiện thắng sau mỗi pha và **kết thúc** khi đạt.
 6. Giữ bí mật tuyệt đối, **không gợi ý, không thiên vị**.
 
-**Mẹo cho Quản trò:**
+**Khi chơi trực tiếp, mẹo cho người Quản trò:**
 - Dùng bảng theo dõi trạng thái: ai sống/chết, bình thuốc còn không, ai được bảo vệ đêm trước, ai bị mê hoặc, cặp đôi là ai.
-- Luôn hiệu lệnh nhất quán khi chuyển pha; khi chơi online thì hiển thị rõ **pha hiện tại** và **thời gian còn lại**.
+- Hiệu lệnh nhất quán khi chuyển pha.
 - Khi nhiều vai cùng nhắm 1 người, xử lý theo bảng tương tác (Mục 9).
-- Khi chơi online, Quản trò (người hoặc trọng tài tự động) còn lo: đặt **đồng hồ pha**, nhận **lựa chọn kín** của từng vai, giữ **kênh riêng cho Sói** và **kênh người đã chết**, và xử lý **người vắng mặt** (Mục 11).
 
 ---
 
 ## 11. ĐIỀU CHỈNH CHO CHƠI ONLINE
 
-Phần này **chỉ là luật chơi** áp dụng khi mọi người chơi từ xa, không ngồi cùng phòng. Mục tiêu: giữ nguyên trải nghiệm Ma Sói nhưng thay các thao tác "nhắm/mở mắt, ra hiệu tay" bằng **lựa chọn kín theo thời gian**.
+Phần này **chỉ là luật chơi** áp dụng khi mọi người chơi từ xa, không ngồi cùng phòng. Mục tiêu: giữ nguyên trải nghiệm Ma Sói nhưng **không cần một người làm Quản trò** — thay các thao tác "nhắm/mở mắt, ra hiệu tay" bằng **lượt chơi cố định + lựa chọn kín theo thời gian**.
+
+### 11.0. Chơi không cần Quản trò (theo lượt)
+- Game đi theo một **thứ tự lượt cố định, công khai** (đúng trình tự Mục 6 cho Đêm, và Mục 7 cho Ngày). Mọi người chơi đều biết trước thứ tự này.
+- **Tới lượt vai nào thì chính người giữ vai đó được thao tác** (chọn mục tiêu kín). Vai khác chưa tới lượt thì chờ; vai không có hành động ở pha đó thì tự bỏ qua.
+- Sau khi mọi lượt trong pha kết thúc, **kết quả được suy ra máy móc theo đúng luật** (bảng tương tác Mục 9, thứ tự xử lý chết) — không ai "phán" cả.
+- **Điều kiện thắng tự kiểm tra** sau mỗi pha theo thứ tự ở Mục 3 (độc lập → Sói → Dân). Đạt là game kết thúc.
+- Nhờ vậy không cần một người trung lập biết hết vai: **luật + thứ tự lượt chính là trọng tài**.
 
 ### 11.1. Thông tin ai được thấy gì
 - **Người còn sống:** thấy danh sách người chơi và trạng thái còn sống/đã chết; tham gia kênh trò chuyện chung ban ngày.
@@ -308,15 +317,19 @@ Phần này **chỉ là luật chơi** áp dụng khi mọi người chơi từ 
 - **Người đã chết:** chuyển sang **chế độ khán giả** — xem được diễn biến nhưng **không được nhắn/gợi ý** cho người sống; có thể có kênh trò chuyện riêng giữa những người đã chết.
 - **Vai chức năng:** kết quả riêng (Tiên tri soi, Phù thủy biết nạn nhân…) chỉ hiển thị **kín cho đúng người đó**.
 
-### 11.2. Hành động theo đồng hồ
-- Mỗi pha có **thời gian giới hạn**; trong pha Đêm, mỗi vai **chọn mục tiêu kín** trước khi hết giờ.
-- Các hành động đêm được **chốt đồng loạt** khi pha kết thúc, rồi mới tính kết quả theo trình tự ở Mục 6 (Bảo vệ trước Sói, Phù thủy sau Sói…).
-- Kết quả đêm (ai chết/được cứu) **chỉ công bố** khi sang Ngày, không lộ trong lúc Đêm.
+### 11.2. Đêm diễn ra theo các bước có thứ tự (không phải khóa cùng lúc)
+- Pha Đêm **không** chốt mọi hành động cùng một lúc. Nó chạy **lần lượt từng bước** theo đúng trình tự Mục 6, mỗi bước có **đồng hồ riêng**:
+  1. Bước của vai trước **chốt xong** mới sang bước của vai sau.
+  2. Nhờ vậy các vai phụ thuộc nhau hoạt động đúng: **Bảo vệ** chọn trước → **Sói** cắn → **Phù thủy** được biết kín ai vừa bị cắn rồi mới quyết định **cứu/độc**.
+- Mỗi bước, vai tới lượt **chọn mục tiêu kín** trước khi hết giờ của bước đó. Hết giờ mà chưa chọn → **bỏ lượt** (xem 11.3).
+- Trong khi Đêm đang diễn ra, **không lộ** kết quả từng bước cho người ngoài. Kết quả tổng (ai chết/được cứu) **chỉ công bố khi sang Ngày**.
 
 ### 11.3. Người vắng mặt / rời giữa chừng
-- Ai **không kịp chọn** hành động trước khi hết giờ: coi như **bỏ lượt** (không hành động đêm đó); khi biểu quyết thì tính **phiếu trắng**.
-- Nếu một người **rời hẳn** giữa ván, áp dụng luật nhà: (a) giữ nhân vật ở trạng thái "không hành động/không bỏ phiếu", hoặc (b) coi như **chết** và xử lý các hiệu ứng khi chết (Thợ săn bắn, cặp đôi chết theo…). Nên chốt cách xử lý **trước khi bắt đầu**.
-- Để tránh bế tắc: nếu cả phe Sói không ai chọn nạn nhân, **đêm đó không ai bị cắn** (hoặc theo luật "Sói cắn không thống nhất" ở Mục 12).
+Vì không có Quản trò can thiệp, các tình huống này có **luật mặc định cố định** để game tự chạy thông suốt:
+- **Hết giờ chưa chọn:** coi như **bỏ lượt** — vai đó không hành động đêm đó; khi biểu quyết thì tính **phiếu trắng**. Không có hành động "mặc định ngầm" nào thay người chơi.
+- **Phe Sói không chọn được nạn nhân** (không ai chọn, hoặc chọn lệch nhau không ra kết quả): **đêm đó không ai bị Sói cắn**. (Nhóm nào muốn quyết liệt hơn có thể bật biến thể "Sói cắn không thống nhất" ở Mục 12.)
+- **Rời hẳn giữa ván:** người đó bị coi như **chết** ngay (và **kích hoạt đủ hiệu ứng khi chết**: Thợ săn được bắn, cặp đôi chết theo…), để ván không bị treo vì chờ một người không quay lại.
+- Mọi mốc thời gian (đồng hồ từng bước Đêm, thảo luận Ngày, biểu quyết) đều **công khai và như nhau** với mọi người để đảm bảo công bằng.
 
 ### 11.4. Giữ công bằng (fair-play)
 - Vai trò và lựa chọn của mỗi người là **bí mật tuyệt đối**; không tiết lộ ra kênh chung.
@@ -331,7 +344,7 @@ Phần này **chỉ là luật chơi** áp dụng khi mọi người chơi từ 
 - **Lật bài khi chết hay không:** giấu vai người chết để tăng độ khó suy luận, hoặc lật bài để minh bạch.
 - **Cấm "claim" vai:** một số nhóm cấm khai vai để tăng tính suy luận.
 - **Giới hạn thời gian thảo luận:** đặt đồng hồ (vd 2–3 phút) mỗi ngày để game nhanh.
-- **Sói cắn không thống nhất:** nếu Sói không đồng thuận, Quản trò chọn ngẫu nhiên trong các mục tiêu, hoặc không ai chết.
+- **Sói cắn không thống nhất:** nếu Sói chọn lệch nhau, mặc định **không ai chết** (Mục 11.3). Biến thể quyết liệt hơn: nạn nhân được chọn **ngẫu nhiên** trong các mục tiêu mà Sói đã nhắm.
 - **Bỏ phiếu treo cổ kiểu phát biểu cuối:** người bị đề cử được nói 1 câu biện hộ cuối.
 - **Thêm/bớt vai:** tự cân bằng theo trình độ người chơi; càng nhiều vai chức năng, game càng phức tạp.
 
