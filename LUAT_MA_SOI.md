@@ -120,7 +120,7 @@ Game lặp lại chu kỳ **Đêm → Ngày** cho tới khi có phe thắng.
 [Ngày 2]           → ... lặp lại ...
 ```
 
-- **Đêm đầu tiên** đặc biệt: Cupid bắn tên, các Sói nhận diện nhau lần đầu. Một số luật cho Đêm đầu **không có ai chết** (chỉ khởi tạo).
+- **Đêm đầu tiên (Đêm 0) đặc biệt — mặc định KHÔNG ai chết:** chỉ dùng để khởi tạo (Cupid bắn tên, các Sói nhận diện nhau). Sói **chưa được cắn** ở Đêm 0; cái chết sớm nhất là ở Đêm 1. *(Biến thể: cho Sói cắn ngay Đêm đầu — Mục 12.)*
 - **Đêm thường:** các vai hành động theo trình tự (Mục 6).
 - **Ngày:** công bố cái chết, thảo luận, biểu quyết.
 
@@ -142,7 +142,7 @@ Khi vào Đêm, Quản trò gọi từng vai theo thứ tự dưới đây. Vai 
 | 2 | **Cặp đôi yêu nhau** | Chỉ Đêm đầu | Được cho biết kín người kia là ai. |
 | 3 | **Thầy đồng / Người gọi hồn** | Mỗi đêm (tùy luật) | Giao tiếp với người đã chết (theo luật nhà). |
 | 4 | **Tiên tri (Seer)** | Mỗi đêm | Chọn 1 người → được báo **kín** người đó là Sói / không phải Sói. |
-| 5 | **Bảo vệ (Guard)** | Mỗi đêm | Chọn 1 người để bảo vệ đêm đó (không trùng đêm trước). |
+| 5 | **Bảo vệ (Guard)** | Mỗi đêm | Chọn 1 người **khác mình** để bảo vệ (không trùng người đã bảo vệ ở **đêm liền trước**). |
 | 6 | **Ma Sói (tất cả Sói)** | Mỗi đêm | Cùng thống nhất **1 nạn nhân** để cắn (trao đổi qua kênh riêng của Sói). |
 | 6b | **Sói Trắng** | Cách đêm | (Mỗi 2 đêm) có thể giết thêm 1 **Sói khác** một mình. |
 | 6c | **Sói Tiên tri** | Mỗi đêm | Soi 1 người để biết vai chính xác (thay vì chỉ Sói/không). |
@@ -150,16 +150,26 @@ Khi vào Đêm, Quản trò gọi từng vai theo thứ tự dưới đây. Vai 
 | 8 | **Kẻ Thổi Sáo (Pied Piper)** | Mỗi đêm | Mê hoặc 2 người (1 nếu ít người còn sống). |
 | 9 | **Cô bé (Little Girl)** | Mỗi đêm | Cố nhận diện Sói khi Sói hành động — rủi ro bị Sói phát hiện (xem Mục 8.1). |
 
-Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: hô *"Trời sáng, mọi người mở mắt"*). Quản trò công bố ai đã chết đêm qua (không tiết lộ vai trừ khi luật yêu cầu).
+Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: hô *"Trời sáng, mọi người mở mắt"*). Công bố ai đã chết đêm qua — **mặc định chỉ báo là họ đã chết, không lộ vai trò** (xem Mục 7.1).
 
-> 📌 Trình tự có thể điều chỉnh theo luật nhà, nhưng **nguyên tắc bất biến**: Bảo vệ chọn **trước** khi Sói cắn; Phù thủy hành động **sau** khi Sói cắn (vì cần biết nạn nhân).
+> 📌 Trình tự có thể điều chỉnh theo luật nhà, nhưng **nguyên tắc bất biến**: Bảo vệ chọn **trước** khi Sói cắn; Phù thủy hành động **sau** khi Sói cắn (vì cần biết nạn nhân). Khi chơi online, Đêm chạy **lần lượt từng bước** theo đúng thứ tự này (xem Mục 11.2).
+
+> 🎯 **Luật chọn mục tiêu hợp lệ (mặc định, áp dụng cho mọi hành động đêm):**
+> - Chỉ được chọn **người còn sống**; **không** được chọn người đã chết.
+> - **Tiên tri** được soi **bất kỳ** người sống, kể cả người mình đã soi trước đó.
+> - **Bảo vệ** không được **tự bảo vệ mình**, và không bảo vệ cùng một người **hai đêm liền**.
+> - **Ma Sói** không được cắn **người thuộc phe Sói** (mục tiêu phải ngoài phe Sói).
+> - **Phù thủy** được **tự cứu** nếu chính mình là nạn nhân bị cắn, nhưng **không được tự đầu độc**; Bình Độc chỉ nhắm người khác.
+> - Khi nhiều Sói: nạn nhân được chốt theo **đa số phiếu trong nội bộ Sói**; nếu **hòa** hoặc **không ai chọn** thì **đêm đó không ai bị cắn**.
 
 ---
 
 ## 7. PHA NGÀY: THẢO LUẬN & BIỂU QUYẾT
 
 ### 7.1. Công bố cái chết
-- Quản trò thông báo (những) người chết đêm qua. Người chết chuyển sang trạng thái **đã chết**: **rời cuộc chơi**, **không được giao tiếp** với người còn sống nữa (trực tiếp: úp/lật bài rồi im lặng; online: chuyển sang chế độ khán giả, chỉ xem hoặc trò chuyện trong kênh riêng của người đã chết).
+- Thông báo (những) người chết đêm qua. Người chết chuyển sang trạng thái **đã chết**: **rời cuộc chơi**, **không được giao tiếp** với người còn sống nữa (trực tiếp: úp bài, ngồi im; online: chuyển sang chế độ khán giả, chỉ xem hoặc trò chuyện trong kênh riêng của người đã chết).
+- **Mặc định KHÔNG lộ vai khi chết:** chỉ công bố **ai chết** và **chết kiểu gì** (chết ban đêm / bị treo cổ / bị Thợ săn bắn), **không** công bố vai trò, phe, hay ai gây ra cái chết bí mật. (Muốn lộ vai thì bật biến thể ở Mục 12.)
+- Nếu nhiều người chết cùng một đêm: công bố **đồng thời một danh sách**, không tách ai chết vì lý do gì.
 - Một số vai kích hoạt khi chết (Thợ săn bắn, Cặp đôi chết theo nhau) — xử lý ngay.
 
 ### 7.2. Thảo luận
@@ -167,12 +177,12 @@ Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: 
 - Người chơi có thể "claim" (khai) vai của mình để tạo lòng tin — nhưng đó cũng là rủi ro lộ mặt cho Sói.
 
 ### 7.3. Biểu quyết treo cổ (Lynch)
-1. Đề cử các ứng viên bị nghi.
-2. Mỗi người còn sống bỏ **1 phiếu** (trực tiếp: giơ tay; online: chọn tên người muốn treo cổ, trong thời gian biểu quyết).
-3. **Người nhiều phiếu nhất bị treo cổ**, lộ kết cục và rời game.
-4. **Hòa phiếu:** áp dụng luật nhà — phổ biến là **không ai chết**, hoặc bỏ phiếu lại giữa những người hòa, hoặc **Trưởng làng** phá hòa.
+1. Mỗi người còn sống bỏ **1 phiếu**: chọn **một người muốn treo cổ**, hoặc chọn **"Tha"** (không treo ai). Trực tiếp: giơ tay; online: chọn tên (hoặc "Tha") trong thời gian biểu quyết. **Mặc định không có bước đề cử riêng** — bỏ phiếu thẳng vào bất kỳ ai.
+2. Được **đổi phiếu tự do** cho tới khi hết giờ; hết giờ thì **khóa phiếu cuối cùng**. Ai không bỏ phiếu coi như **phiếu trắng** (online: tính như chọn "Tha").
+3. **Người nhiều phiếu nhất bị treo cổ** (luật **nhiều phiếu nhất** — không cần quá bán), **bị loại khỏi ván** (không lộ vai). Nếu **"Tha"** nhiều phiếu nhất thì **không ai bị treo**.
+4. **Hòa phiếu (mặc định): không ai bị treo** ngày đó; không bỏ phiếu lại. ("Tha" hòa với một người ở vị trí dẫn đầu cũng tính là hòa → không treo ai.)
 
-> Mỗi ngày treo cổ **tối đa 1 người** (trừ biến thể đặc biệt). Có thể có luật "bỏ qua không treo ai" nếu làng đồng thuận. Khi chơi online, ai **không bỏ phiếu** trước khi hết giờ coi như **phiếu trắng**.
+> Mỗi ngày treo cổ **tối đa 1 người**. *(Biến thể: bắt buộc quá bán, bỏ phiếu lại khi hòa, hoặc cho Trưởng làng phá hòa — xem Mục 12.)*
 
 ---
 
@@ -185,19 +195,19 @@ Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: 
 - **Nhiệm vụ:** Suy luận, thảo luận, biểu quyết treo cổ Sói. Lá bài "nền" tạo số đông cho làng.
 
 #### Tiên tri (Seer / Fortune Teller) 🔮
-- **Phe:** Dân. **Hành động:** Mỗi đêm soi **1 người**; Quản trò ra hiệu người đó **là Sói hay không phải Sói**.
+- **Phe:** Dân. **Hành động:** Mỗi đêm soi **1 người sống** (được soi lại cả người mình đã soi trước đó); được báo **kín** người đó **là Sói hay không phải Sói**.
 - **Lưu ý:** Vai mạnh nhất của Dân; thường là mục tiêu số 1 của Sói. Phải khéo léo dẫn dắt mà không lộ mặt sớm.
 
 #### Bảo vệ / Hộ vệ (Guard / Bodyguard) 🛡️
-- **Phe:** Dân. **Hành động:** Mỗi đêm chọn **1 người** (có thể chọn chính mình tùy luật) để bảo vệ. Người được bảo vệ **không chết nếu bị Sói cắn** đêm đó.
-- **Ràng buộc:** **Không được bảo vệ cùng một người 2 đêm liên tiếp.**
-- **Lưu ý:** Bảo vệ **không** chặn được Bình Độc của Phù thủy (tùy luật nhà).
+- **Phe:** Dân. **Hành động:** Mỗi đêm chọn **1 người khác mình** để bảo vệ. Người được bảo vệ **không chết nếu bị Sói cắn** đêm đó.
+- **Ràng buộc:** **Không tự bảo vệ mình**, và **không bảo vệ cùng một người ở hai đêm liền.**
+- **Lưu ý:** Bảo vệ **chỉ chặn Sói cắn**, **không** chặn Bình Độc của Phù thủy.
 
 #### Phù thủy (Witch) 🧪
 - **Phe:** Dân. **Tài nguyên:** 1 **Bình Cứu** + 1 **Bình Độc**, mỗi bình dùng **1 lần duy nhất** cả ván.
-- **Hành động:** Mỗi đêm được Quản trò cho biết **ai bị Sói cắn**.
-  - **Bình Cứu:** cứu sống nạn nhân đêm đó (có thể cứu chính mình tùy luật).
-  - **Bình Độc:** giết chết thêm **1 người** bất kỳ.
+- **Hành động:** Mỗi đêm được cho biết **kín** ai vừa bị Sói cắn, rồi mới quyết định:
+  - **Bình Cứu:** cứu sống nạn nhân đêm đó. **Được tự cứu** nếu chính mình là nạn nhân.
+  - **Bình Độc:** giết chết thêm **1 người khác** (**không được tự đầu độc**).
 - **Lưu ý:** Có thể dùng cả 2 bình trong cùng 1 đêm hoặc để dành.
 
 #### Thợ săn (Hunter) 🏹
@@ -263,7 +273,7 @@ Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: 
 |---|---|
 | **Bảo vệ trùng nạn nhân của Sói** | Nạn nhân **sống sót** (được cứu). |
 | **Phù thủy cứu trùng nạn nhân của Sói** | Nạn nhân **sống sót**. |
-| **Bảo vệ + Phù thủy độc cùng người** | Bảo vệ **không** chặn Bình Độc (tùy luật nhà) → người đó vẫn chết. |
+| **Bảo vệ + Phù thủy độc cùng người** | Bảo vệ **chỉ chặn Sói cắn**, **không** chặn Bình Độc → người đó vẫn chết. |
 | **Tiên tri soi Sói Trắng** | Hiện ra là **Sói**. |
 | **Tiên tri soi người yêu Sói (cặp đôi)** | Hiện đúng vai gốc (Dân thì là Dân). |
 | **Thợ săn bị Sói cắn chết** | Vẫn được **bắn 1 người** trước khi rời game. |
@@ -272,7 +282,7 @@ Sau khi tất cả hành động xong, game chuyển sang Ngày (trực tiếp: 
 | **Trưởng làng chết** | Truyền chức cho người khác (nếu dùng luật truyền chức). |
 | **Sói Trắng giết Sói cuối cùng** | Phe Sói còn lại chỉ là Sói trắng → tiếp tục đua tới khi còn 1 mình. |
 | **Nhiều cái chết cùng lúc kích hoạt dây chuyền** | Xử lý theo thứ tự nguyên nhân, áp dụng hết hiệu ứng rồi mới kiểm tra điều kiện thắng. |
-| **Biểu quyết hòa** | Luật nhà: không ai chết / bỏ phiếu lại / Trưởng làng phá hòa. |
+| **Biểu quyết hòa** | **Mặc định: không ai bị treo.** (Biến thể: bỏ phiếu lại / Trưởng làng phá hòa — Mục 12.) |
 
 > **Nguyên tắc vàng:** giải quyết **toàn bộ hiệu ứng dây chuyền** (chết theo, bắn súng…) **xong xuôi**, **rồi mới** kiểm tra điều kiện thắng của các phe theo thứ tự: độc lập → Sói → Dân.
 
@@ -340,12 +350,16 @@ Vì không có Quản trò can thiệp, các tình huống này có **luật m�
 
 ## 12. CÁC BIẾN THỂ & LUẬT TÙY CHỌN
 
-- **Đêm đầu không ai chết:** chỉ khởi tạo (Cupid, nhận mặt Sói), Sói chưa cắn. Giúp game không mất vai sớm.
-- **Lật bài khi chết hay không:** giấu vai người chết để tăng độ khó suy luận, hoặc lật bài để minh bạch.
-- **Cấm "claim" vai:** một số nhóm cấm khai vai để tăng tính suy luận.
-- **Giới hạn thời gian thảo luận:** đặt đồng hồ (vd 2–3 phút) mỗi ngày để game nhanh.
-- **Sói cắn không thống nhất:** nếu Sói chọn lệch nhau, mặc định **không ai chết** (Mục 11.3). Biến thể quyết liệt hơn: nạn nhân được chọn **ngẫu nhiên** trong các mục tiêu mà Sói đã nhắm.
-- **Bỏ phiếu treo cổ kiểu phát biểu cuối:** người bị đề cử được nói 1 câu biện hộ cuối.
+> Các luật dưới đây là **tùy chọn**, dùng để thay cho luật **mặc định** đã nêu ở các mục trên.
+
+- **Cho Sói cắn ngay Đêm đầu:** ngược với mặc định "Đêm 0 không ai chết" (Mục 5) — có thể có người chết ngay sau đêm đầu.
+- **Lộ vai khi chết:** ngược với mặc định "không lộ vai" (Mục 7.1) — lật bài/công bố vai người chết để minh bạch, dễ suy luận hơn nhưng giảm độ khó.
+- **Treo cổ cần quá bán:** thay cho mặc định "nhiều phiếu nhất" (Mục 7.3) — chỉ treo khi có **trên 50%** số người sống đồng ý.
+- **Bỏ phiếu lại khi hòa:** thay cho mặc định "hòa thì không treo ai" — bỏ phiếu vòng hai giữa những người hòa.
+- **Trưởng làng phá hòa:** nếu trong ván có Trưởng làng, cho phép phiếu của Trưởng làng quyết khi hòa.
+- **Sói cắn ngẫu nhiên khi không thống nhất:** thay cho mặc định "không ai chết" (Mục 11.3) — nạn nhân được chọn **ngẫu nhiên** trong các mục tiêu Sói đã nhắm.
+- **Cấm "claim" vai:** cấm khai vai để tăng tính suy luận.
+- **Bỏ phiếu kiểu phát biểu cuối:** người dẫn đầu phiếu được nói 1 câu biện hộ trước khi chốt.
 - **Thêm/bớt vai:** tự cân bằng theo trình độ người chơi; càng nhiều vai chức năng, game càng phức tạp.
 
 ---
