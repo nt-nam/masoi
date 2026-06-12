@@ -37,6 +37,7 @@ export function setupSockets(io: Server): RoomManager {
       const member = existing.memberByUser(user.id);
       if (member) {
         socket.emit('room:update', existing.roomViewFor(member));
+        socket.emit('chat:history', existing.historyFor(member));
         const sync = existing.stateSyncFor(member);
         if (sync) socket.emit('game:stateSync', sync);
       }
@@ -68,6 +69,7 @@ export function setupSockets(io: Server): RoomManager {
       member.connected = true;
       member.socketId = socket.id;
       room.broadcastRoom();
+      socket.emit('chat:history', room.historyFor(member));
       const sync = room.stateSyncFor(member);
       if (sync) socket.emit('game:stateSync', sync);
       ok(ack, { room: room.roomViewFor(member) });
@@ -213,6 +215,7 @@ export function setupSockets(io: Server): RoomManager {
       if (!room || !member) return err(ack, 'NOT_IN_ROOM');
       const emote = (p as any)?.emote as EmoteId;
       if (!EMOTES.includes(emote)) return err(ack, 'INVALID_ACTION');
+      if (!room.canEmote(member)) return err(ack, 'CHANNEL_FORBIDDEN'); // người chết im lặng tuyệt đối
       const now = Date.now();
       if (now - member.lastEmoteAt < 3000) return err(ack, 'RATE_LIMITED');
       member.lastEmoteAt = now;

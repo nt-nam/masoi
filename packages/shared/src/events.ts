@@ -78,6 +78,8 @@ export interface ServerToClient {
   'room:update': (room: RoomView) => void;
   'game:stateSync': (sync: StateSync) => void;
   'chat:message': (msg: ChatMessage) => void;
+  /** Lịch sử chat (đã lọc theo quyền đọc HIỆN TẠI) — gửi khi join/reconnect để F5 không mất feed. */
+  'chat:history': (msgs: ChatMessage[]) => void;
   'emote:shown': (p: { seat: number; emote: EmoteId }) => void;
   'accuse:update': (accusals: Record<number, number>) => void;
   'room:closed': (p: { reason: string }) => void;

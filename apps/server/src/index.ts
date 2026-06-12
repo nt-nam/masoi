@@ -7,7 +7,7 @@ import { Server } from 'socket.io';
 import { createGuest, SESSION_COOKIE, userFromCookieHeader, validName } from './auth.js';
 import { setupSockets } from './sockets.js';
 
-const PORT = Number(process.env.PORT || 3001);
+const PORT = Number(process.env.PORT || 3210);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();

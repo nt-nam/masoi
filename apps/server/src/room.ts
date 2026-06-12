@@ -20,6 +20,7 @@ import {
   MIN_PLAYERS,
   TIMER_PRESETS,
   type ChannelId,
+  type ChatMessage,
   type ErrorCode,
   type RoomConfig,
   type RoomView,
@@ -63,6 +64,8 @@ export class Room {
   hostUserId: string;
   status: 'waiting' | 'starting' | 'inGame' | 'finished' = 'waiting';
   game: GameRun | null = null;
+  /** Lịch sử chat (mọi kênh) — để gửi lại khi reload/reconnect. */
+  private history: ChatMessage[] = [];
 
   constructor(
     private io: Server,
@@ -193,17 +196,28 @@ export class Room {
   }
 
   sendSystem(text: string): void {
+    const msg: ChatMessage = { channel: 'village', fromSeat: -1, fromName: 'Làng', text, ts: Date.now() };
+    this.pushHistory(msg);
     for (const m of this.humanMembers()) {
-      if (m.socketId) {
-        this.io.to(m.socketId).emit('chat:message', {
-          channel: 'village' as const,
-          fromSeat: -1,
-          fromName: 'Làng',
-          text,
-          ts: Date.now(),
-        });
-      }
+      if (m.socketId) this.io.to(m.socketId).emit('chat:message', msg);
     }
+  }
+
+  private pushHistory(msg: ChatMessage): void {
+    this.history.push(msg);
+    if (this.history.length > 150) this.history.splice(0, this.history.length - 150);
+  }
+
+  /** Lịch sử mà member được phép đọc Ở THỜI ĐIỂM HIỆN TẠI (không lộ kênh kín cũ cho người mới đổi trạng thái). */
+  historyFor(member: Member): ChatMessage[] {
+    const readable = new Set<ChannelId>(['lobby', 'village']);
+    const g = this.game;
+    if (g && member.seat !== null) {
+      const p = g.state.players[member.seat];
+      if (p?.faction === 'wolves') readable.add('wolf');
+      if (p && !p.alive) readable.add('dead');
+    }
+    return this.history.filter((m) => readable.has(m.channel));
   }
 
   // ===== Vòng đời ván =====
@@ -446,16 +460,23 @@ export class Room {
   }
 
   deliverChat(fromMember: Member, channel: ChannelId, text: string): void {
-    const msg = {
+    const msg: ChatMessage = {
       channel,
       fromSeat: fromMember.seat ?? this.members.indexOf(fromMember),
       fromName: fromMember.name,
       text,
       ts: Date.now(),
     };
+    this.pushHistory(msg);
     for (const m of this.chatRecipients(channel)) {
       if (m.socketId) this.io.to(m.socketId).emit('chat:message', msg);
     }
+  }
+
+  /** Người chết không được tác động vào người sống — kể cả bằng emote (luật 11.4). */
+  canEmote(member: Member): boolean {
+    if (this.status !== 'inGame' || !this.game || member.seat === null) return true; // lobby thoải mái
+    return this.game.state.players[member.seat]?.alive ?? false;
   }
 
   // ===== Bot =====
