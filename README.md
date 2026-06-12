@@ -11,7 +11,8 @@ Web game Ma Sói (Werewolf) chơi online nhiều người: phòng riêng theo m�
 - Đêm chạy lần lượt từng bước kín; ngày thảo luận theo **lượt nói ngẫu nhiên**; biểu quyết có "Tha", công khai bảng phiếu sau khi khóa.
 - Chat đa kênh (Làng / Sói / Người chết), emote, chỉ điểm; chế độ khán giả khi chết.
 - Bot heuristic biết hành động theo vai và phát biểu khi tới lượt.
-- Giai đoạn sau (xem PLAN §12): ghép trận người lạ, tài khoản Google/email, hồ sơ + thống kê, vai mở rộng, âm thanh.
+- Âm thanh tổng hợp WebAudio (không cần asset): sting chuyển pha, trống công bố chết, chuông treo cổ, chime tới lượt.
+- Giai đoạn sau (xem PLAN §12): ghép trận người lạ, tài khoản Google/email, hồ sơ + thống kê, vai mở rộng.
 
 ## Chạy dự án
 
@@ -20,12 +21,12 @@ Yêu cầu: Node ≥ 22, pnpm ≥ 10.
 ```bash
 pnpm install
 
-# Dev (server :3001 + web :5173, hot-reload)
+# Dev (server :3210 + web :5173, hot-reload)
 pnpm dev
 
 # Production local (server serve luôn web đã build)
 pnpm build
-pnpm --filter @masoi/server start   # → http://localhost:3001
+pnpm --filter @masoi/server start   # → http://localhost:3210
 ```
 
 Mở http://localhost:5173 (dev) — nhập tên → tạo phòng → thêm bot cho đủ 5 → bắt đầu. Muốn xem ván chạy nhanh khi thử nghiệm: đặt `MASOI_TIMER_SCALE=0.25` trước khi start server (mọi đồng hồ pha nhân hệ số này).

@@ -6,3 +6,4 @@ dist/
 .env.*
 *.log
 docs/*.html
+.playwright-mcp/

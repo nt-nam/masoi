@@ -1,9 +1,9 @@
 # Ma Sói Web App — Tiến độ & Kết quả
 
 > Lần cập nhật gần nhất: 2026-06-13
-> Tổng: **15 pass / 0 fail / 1 skip / 0 pending** (16 task — GĐ1)
+> Tổng: **20 pass / 0 fail / 1 blocked / 0 pending** (21 task — GĐ1 + đợt polish)
 
-Phạm vi đợt này: **GĐ1 — MVP chơi được với bạn** (PLAN §12.1, M0–M5). GĐ2/GĐ3 chưa phân rã — sẽ thêm task khi tới.
+Phạm vi đợt này: **GĐ1 — MVP chơi được với bạn** (PLAN §12.1, M0–M5) + đợt polish theo review. GĐ2/GĐ3 chưa phân rã — sẽ thêm task khi tới.
 
 ## 1. Tiến độ qua các lần làm
 
@@ -11,6 +11,7 @@ Phạm vi đợt này: **GĐ1 — MVP chơi được với bạn** (PLAN §12.1,
 |---|---|---|---|---|---|
 | Baseline (2026-06-13) | 0 | 0 | 0 | 16 | Phân rã GĐ1 thành 16 task |
 | Iter 1 (2026-06-13) | 15 | 0 | 1 | 0 | Code toàn bộ GĐ1: monorepo 5 gói, engine + 32 test, server + smoke test, web đầy đủ màn + hiệu ứng đợt 1. Verify end-to-end bằng browser thật (1 người + 4 bot chơi trọn ván) |
+| Iter 2 (2026-06-13) | 20 | 0 | 1 | 0 | Đợt polish sau review (T17–T21): âm thanh WebAudio, title theo pha + chime tới lượt, gửi lại lịch sử chat khi reload, fix leak emote người chết, banner mất kết nối. Đổi port mặc định 3210 (3001 đụng app khác trên máy). Verify lại bằng browser: F5 giữa ván khôi phục đủ feed + state |
 | Mục tiêu GĐ1 | ≥ 14 | 0 | ≤ 2 | 0 | ✅ ĐẠT |
 
 ## 2. Trạng thái từng task
@@ -33,12 +34,17 @@ Phạm vi đợt này: **GĐ1 — MVP chơi được với bạn** (PLAN §12.1,
 | T14 | Web: hiệu ứng đợt 1 (M4) | E1/E2 chuyển pha (đổi màu 2.5s + trăng mọc + tiêu đề ĐÊM/NGÀY THỨ N), E3 lật bài vai 3D, E4 spotlight + ring lượt nói, E10 nút glow + emote bay + tin nhắn slide. Âm thanh: **Skip** (xem F1). | Pass |
 | T15 | Chạy production local (M5) | `pnpm build` → server serve static; README hướng dẫn; smoke test tích hợp (socket.io-client, ván full bot create→gameOver, 3.5s); **verify tay bằng Playwright browser**: landing → lobby → phòng → ván trọn vẹn → modal kết quả (screenshot tại `docs/screenshots/`). | Pass |
 | T16 | Deploy public (M5) | Đưa lên hosting free-tier. | Blocked — cần user chọn provider + tài khoản (PLAN §12.2) |
+| T17 | Âm thanh WebAudio (polish) | Tổng hợp âm bằng oscillator — không cần file asset: sting đêm/ngày, trống công bố chết, chuông treo cổ, tick 5s cuối, chime tới lượt, stinger thắng/thua. Nút 🔊/🔇 lưu localStorage. Giải F1 tạm thời. | Pass |
+| T18 | Title theo pha + báo lượt (polish) | Tab title đổi 🌙/☀️ theo pha (PLAN §10.4); đang ở tab khác mà tới lượt → title "🔔 Tới lượt bạn!" + chime. | Pass |
+| T19 | Gửi lại lịch sử chat khi reload (polish) | Server giữ 150 tin gần nhất, lọc theo quyền đọc HIỆN TẠI của member (không lộ kênh Sói/chết cho người không thuộc) rồi gửi khi join/reconnect. F5 giữa ván không mất phương hướng nữa. | Pass |
+| T20 | Fix leak: chặn emote người chết (polish) | Review phát hiện người chết vẫn emote cho người sống thấy = kênh mách nước ngầm (vi phạm luật 11.4). Chặn ở server. | Pass |
+| T21 | Banner mất kết nối (polish) | Banner toàn cục khi rớt WebSocket, ghi rõ "chỗ được giữ 90 giây"; tự ẩn khi nối lại. | Pass |
 
 ## 3. Phân tích lỗi / việc chủ động bỏ qua (gom theo root cause)
 
 | # | Tên vấn đề | Mô tả | Ảnh hưởng |
 |---|---|---|---|
-| F1 | Chưa có âm thanh | Cần asset CC0 (sói hú, gà gáy, chuông, trống) — không tự sinh được trong đợt này. Stack Howler + audio sprite đã chốt trong PLAN §14.3, chỉ chờ asset. | Trải nghiệm thiếu lớp âm; không chặn gameplay |
+| F1 | ~~Chưa có âm thanh~~ → đã có bản WebAudio tổng hợp (T17) | Bản synth đủ dùng; khi có asset CC0 thật (sói hú, gà gáy) thì nâng cấp theo stack Howler + audio sprite của PLAN §14.3. | Đã giảm còn "nâng chất sau" |
 | F2 | Asset hình tạm | Avatar = emoji, chưa phải chân dung khắc gỗ theo art direction §13.3. | Nhìn được nhưng chưa đúng chuẩn art; thay dần ở GĐ3 |
 | F3 | Domain events engine hoãn | Engine chưa phát DomainEvent riêng (feed do server suy từ chuyển pha). Cần khi làm replay/thống kê GĐ2-3 (PLAN §6.5). | Không ảnh hưởng GĐ1; cần refactor nhẹ khi tới GĐ2 |
 
