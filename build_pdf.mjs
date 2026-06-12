@@ -1,10 +1,10 @@
 // Chuyển một file .md -> .html (rồi dùng Chrome headless in ra PDF).
-// Dùng: node build_pdf.mjs [TÊN_FILE.md]   (mặc định LUAT_MA_SOI.md)
+// Dùng: node build_pdf.mjs [TÊN_FILE.md]   (mặc định docs/LUAT_MA_SOI.md)
 // Trình chuyển Markdown tối giản: headers, hr, blockquote, bảng GFM,
 // list (ordered/unordered, 1 cấp lồng), bold, inline code, code fence, link, emoji.
 import { readFileSync, writeFileSync } from "node:fs";
 
-const inFile = process.argv[2] || "LUAT_MA_SOI.md";
+const inFile = process.argv[2] || "docs/LUAT_MA_SOI.md";
 const outHtml = inFile.replace(/\.md$/i, "") + ".html";
 
 const src = readFileSync(inFile, "utf8");

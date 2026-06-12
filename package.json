@@ -1,0 +1,23 @@
+{
+  "name": "masoi",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "packageManager": "pnpm@11.1.3",
+  "scripts": {
+    "dev": "concurrently -n server,web -c yellow,cyan \"pnpm --filter @masoi/server dev\" \"pnpm --filter @masoi/web dev\"",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "build": "turbo run build",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "concurrently": "^9.1.0",
+    "eslint": "^9.20.0",
+    "prettier": "^3.5.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0"
+  }
+}
