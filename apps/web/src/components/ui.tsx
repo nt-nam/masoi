@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { avatarOf } from '../lib/meta';
+import { sfx } from '../lib/sound';
 import { serverNow } from '../store';
 
 export function Avatar({ index, size = 44 }: { index: number; size?: number }) {
@@ -23,11 +24,20 @@ export function Avatar({ index, size = 44 }: { index: number; size?: number }) {
 export function Countdown({ deadline }: { deadline: number | null }) {
   const [remain, setRemain] = useState(0);
   const totalRef = useRef(1);
+  const lastSecRef = useRef(-1);
 
   useEffect(() => {
     if (deadline === null) return;
     totalRef.current = Math.max(1, deadline - serverNow());
-    const tick = () => setRemain(Math.max(0, deadline - serverNow()));
+    const tick = () => {
+      const r = Math.max(0, deadline - serverNow());
+      setRemain(r);
+      const s = Math.ceil(r / 1000);
+      if (s !== lastSecRef.current) {
+        lastSecRef.current = s;
+        if (s > 0 && s <= 5) sfx.tick(); // 5 giây cuối (PLAN §14.3)
+      }
+    };
     tick();
     const t = setInterval(tick, 250);
     return () => clearInterval(t);

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import type { ChatMessage, EmoteId, RoomView, StateSync } from '@masoi/shared';
 import type { ApiUser } from './lib/api';
 import { socket } from './lib/socket';
+import { sfx } from './lib/sound';
 
 // ===== Phiên người dùng =====
 
@@ -66,6 +67,8 @@ interface ChatState {
   active: string;
   unread: Record<string, number>;
   push: (m: ChatMessage) => void;
+  /** Thay toàn bộ bằng lịch sử server gửi (sau reload/reconnect). */
+  replace: (msgs: ChatMessage[]) => void;
   setActive: (channel: string) => void;
   reset: () => void;
 }
@@ -82,8 +85,24 @@ export const useChat = create<ChatState>((set) => ({
           ? s.unread
           : { ...s.unread, [m.channel]: (s.unread[m.channel] ?? 0) + 1 },
     })),
+  replace: (msgs) => set({ messages: msgs.slice(-CHAT_CAP), unread: {} }),
   setActive: (active) => set((s) => ({ active, unread: { ...s.unread, [active]: 0 } })),
   reset: () => set({ messages: [], unread: {} }),
+}));
+
+// ===== Trạng thái kết nối socket =====
+
+interface ConnState {
+  connected: boolean;
+  /** Đã từng nối được — để không hiện banner "mất kết nối" lúc mới mở trang. */
+  everConnected: boolean;
+  set: (connected: boolean) => void;
+}
+
+export const useConn = create<ConnState>((set) => ({
+  connected: false,
+  everConnected: false,
+  set: (connected) => set((s) => ({ connected, everConnected: s.everConnected || connected })),
 }));
 
 // ===== Emote nổi trên avatar =====
@@ -106,9 +125,17 @@ export const useEmotes = create<EmotesState>((set) => ({
 // ===== Wire socket events → stores (gọi 1 lần ở App) =====
 
 let wired = false;
+let lastPop = 0;
 export function wireSocket(): void {
   if (wired) return;
   wired = true;
+
+  socket.on('connect', () => useConn.getState().set(true));
+  socket.on('disconnect', () => useConn.getState().set(false));
+
+  socket.on('chat:history', (msgs: ChatMessage[]) => {
+    useChat.getState().replace(msgs);
+  });
 
   socket.on('room:update', (room: RoomView) => {
     useRoom.getState().setRoom(room);
@@ -125,6 +152,11 @@ export function wireSocket(): void {
 
   socket.on('chat:message', (m: ChatMessage) => {
     useChat.getState().push(m);
+    // pop nhẹ cho tin nhắn người chơi (âm pha/hệ thống đã có sound riêng), throttle chống spam bot
+    if (m.fromSeat !== -1 && Date.now() - lastPop > 900) {
+      lastPop = Date.now();
+      sfx.pop();
+    }
   });
 
   socket.on('emote:shown', (p: { seat: number; emote: EmoteId }) => {

@@ -2,10 +2,24 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { fetchMe } from './lib/api';
 import { connectSocket } from './lib/socket';
-import { useSession, wireSocket } from './store';
+import { useConn, useSession, wireSocket } from './store';
 import { Landing } from './screens/Landing';
 import { Lobby } from './screens/Lobby';
 import { RoomScreen } from './screens/Room';
+
+/** Banner toàn cục khi rớt WebSocket — server giữ slot 90s cho re-join (PLAN §7.5). */
+function ConnectionBanner() {
+  const { connected, everConnected } = useConn();
+  if (connected || !everConnected) return null;
+  return (
+    <div
+      className="fixed inset-x-0 top-0 z-[100] py-1.5 text-center text-sm font-semibold"
+      style={{ background: 'var(--wolf)', color: '#ffe9e9' }}
+    >
+      📡 Mất kết nối — đang kết nối lại… (chỗ của bạn được giữ trong 90 giây)
+    </div>
+  );
+}
 
 function Guard({ children }: { children: React.ReactNode }) {
   const { user, ready } = useSession();
@@ -43,6 +57,7 @@ export function App() {
 
   return (
     <BrowserRouter>
+      <ConnectionBanner />
       <Routes>
         <Route path="/" element={user ? <Navigate to="/lobby" replace /> : <Landing />} />
         <Route

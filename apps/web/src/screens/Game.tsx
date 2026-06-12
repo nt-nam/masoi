@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { RoomView } from '@masoi/shared';
 import { emitAck } from '../lib/socket';
+import { isMuted, sfx, toggleMuted } from '../lib/sound';
 import { useGame } from '../store';
 import { Countdown } from '../components/ui';
 import { PlayerGrid } from '../components/PlayerGrid';
@@ -19,9 +20,61 @@ export function GameScreen({ room }: { room: RoomView }) {
   const [witchSave, setWitchSave] = useState(false);
   const [roleSeen, setRoleSeen] = useState(false);
   const [peekRole, setPeekRole] = useState(false);
+  const [muted, setMuted] = useState(isMuted());
+  const soundKeyRef = useRef('');
+  const promptStepRef = useRef<string | null>(null);
 
   const view = sync?.view ?? null;
   const isRoleReveal = view?.phase.kind === 'roleReveal';
+
+  // Âm thanh theo chuyển pha (PLAN §14.3) — mỗi transition kêu đúng 1 lần
+  useEffect(() => {
+    if (!view) return;
+    const k = view.phase.kind;
+    const key = `${k}:${view.nightNumber}:${view.dayNumber}`;
+    if (key === soundKeyRef.current) return;
+    soundKeyRef.current = key;
+    if (k === 'night') sfx.night();
+    else if (k === 'dayAnnounce') {
+      sfx.day();
+      if (view.phase.kind === 'dayAnnounce' && view.phase.deaths.length > 0) {
+        setTimeout(() => sfx.drum(), 700);
+      }
+    } else if (k === 'voteResult' && view.phase.kind === 'voteResult' && view.phase.lynched !== null) {
+      sfx.bell();
+    } else if (k === 'gameOver' && view.phase.kind === 'gameOver') {
+      if (view.you && view.you.faction === view.phase.winner) sfx.win();
+      else sfx.lose();
+    }
+  }, [view?.phase.kind, view?.nightNumber, view?.dayNumber]);
+
+  // Chime + đổi title khi TỚI LƯỢT mình (kể cả đang ở tab khác — PLAN §10.4)
+  useEffect(() => {
+    const step = view?.you?.prompt?.step ?? null;
+    if (step && step !== promptStepRef.current) {
+      sfx.turn();
+      if (document.hidden) document.title = '🔔 Tới lượt bạn! — Ma Sói';
+    }
+    promptStepRef.current = step;
+  }, [view?.you?.prompt?.step]);
+
+  // Title theo pha — nhìn tab là biết ván tới đâu (PLAN §10.4)
+  useEffect(() => {
+    if (!view) return;
+    const icon = view.phase.kind === 'night' || view.phase.kind === 'roleReveal' ? '🌙' : '☀️';
+    const label =
+      view.phase.kind === 'night'
+        ? `Đêm ${view.nightNumber}`
+        : view.phase.kind === 'gameOver'
+          ? 'Kết thúc'
+          : view.dayNumber > 0
+            ? `Ngày ${view.dayNumber}`
+            : 'Nhận vai';
+    document.title = `${icon} ${label} — Ma Sói`;
+    return () => {
+      document.title = 'Ma Sói — Ngôi làng trong sương đêm';
+    };
+  }, [view?.phase.kind, view?.nightNumber, view?.dayNumber]);
 
   useEffect(() => {
     setPoisonMode(false);
@@ -152,6 +205,14 @@ export function GameScreen({ room }: { room: RoomView }) {
                 </span>
               </button>
             )}
+            <button
+              className="rounded-lg px-2 py-1 text-sm"
+              style={{ background: 'var(--bg-raised)' }}
+              title={muted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+              onClick={() => setMuted(toggleMuted())}
+            >
+              {muted ? '🔇' : '🔊'}
+            </button>
             <Countdown deadline={sync.deadlineTs} />
           </header>
 
